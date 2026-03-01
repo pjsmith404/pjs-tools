@@ -8,18 +8,18 @@ import (
 )
 
 func handlerIp(w http.ResponseWriter, r *http.Request) {
-	ip, _, err := net.SplitHostPort(r.RemoteAddr)
+	clientIp, _, err := net.SplitHostPort(r.RemoteAddr)
 	if err != nil {
 		respondWithError(w, http.StatusInternalServerError, "Failed to parse client IP", err)
 	}
 
 	xForwardedFor := parseClientFromXFF(r.Header.Get("X-Forwarded-For"))
 	if xForwardedFor != "" {
-		ip = xForwardedFor
+		clientIp = xForwardedFor
 	}
 
 	w.WriteHeader(http.StatusOK)
-	w.Write([]byte(ip))
+	w.Write([]byte(clientIp))
 }
 
 func parseClientFromXFF(xForwardedFor string) string {
@@ -29,10 +29,9 @@ func parseClientFromXFF(xForwardedFor string) string {
 	}
 
 	ips := strings.Split(xForwardedFor, ",")
-
-	clientIp := ips[0]
+	clientIp := strings.TrimSpace(ips[0])
 	if net.ParseIP(clientIp) == nil {
-		log.Printf("XFF does not contain a valid IP")
+		log.Printf("clientIp is not a valid IP")
 		return ""
 	}
 
