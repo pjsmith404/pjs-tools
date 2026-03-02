@@ -8,8 +8,8 @@ func TestParseClientFromXFF(t *testing.T) {
 	testCases := [][]string{
 		[]string{"", ""},
 		[]string{"1.1.1.1", "1.1.1.1"},
-		[]string{"1.1.1.1,2.2.2.2","1.1.1.1"},
-		[]string{" 1.1.1.1 , 2.2.2.2","1.1.1.1"},
+		[]string{"1.1.1.1,2.2.2.2", "1.1.1.1"},
+		[]string{" 1.1.1.1 , 2.2.2.2", "1.1.1.1"},
 		[]string{"arlkjnlakrujaslduh", ""},
 		[]string{"sfhsadfhafhahfr,1.1.1.1", ""},
 	}
