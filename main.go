@@ -6,7 +6,10 @@ import (
 )
 
 func main() {
-	const port = "8080"
+	port, exists := os.LookupEnv("FUNCTIONS_CUSTOMHANDLER_PORT")
+	if !exists {
+		port = "8080"
+	}
 
 	mux := http.NewServeMux()
 	mux.HandleFunc("GET /status", handlerStatus)
