@@ -31,7 +31,7 @@ func parseClientFromXFF(xForwardedFor string) string {
 	ips := strings.Split(xForwardedFor, ",")
 	clientIp := strings.TrimSpace(ips[0])
 	for i, ip := range ips {
-		log.Printf("Forwarded For IP %s: %s", i, ip)
+		log.Printf("Forwarded For IP %v: %v", i, ip)
 	}
 	if net.ParseIP(clientIp) == nil {
 		log.Printf("clientIp is not a valid IP")
