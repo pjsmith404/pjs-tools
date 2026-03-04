@@ -30,9 +30,9 @@ func parseClientFromXFF(xForwardedFor string) string {
 
 	ips := strings.Split(xForwardedFor, ",")
 	clientIp := strings.TrimSpace(ips[0])
-	for i, ip := range ips {
-		log.Printf("Forwarded For IP %v: %v", i, ip)
-	}
+	// I wouldn't normally expect a port in XFF, but Azure does it because reasons
+	clientIp = strings.Split(clientIp, ":")[0]
+
 	if net.ParseIP(clientIp) == nil {
 		log.Printf("clientIp is not a valid IP")
 		return ""

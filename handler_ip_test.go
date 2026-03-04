@@ -12,6 +12,7 @@ func TestParseClientFromXFF(t *testing.T) {
 		[]string{" 1.1.1.1 , 2.2.2.2", "1.1.1.1"},
 		[]string{"arlkjnlakrujaslduh", ""},
 		[]string{"sfhsadfhafhahfr,1.1.1.1", ""},
+		[]string{"1.1.1.1:1234,2.2.2.2:1234","1.1.1.1"},
 	}
 
 	for _, testCase := range testCases {
