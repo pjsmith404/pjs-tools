@@ -5,7 +5,7 @@
 			"defaultExecutablePath": "pjs-tools"
 		},
 		"enableForwardingHttpRequest": true
-	}
+	},
 	"extensions": {
 		"http": {
 			"routePrefix": ""
