@@ -10,7 +10,7 @@ on:
 jobs:
 
   build-and-deploy:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     permissions:
       id-token: write
       contents: read
@@ -23,7 +23,7 @@ jobs:
         go-version: '1.24.x'
 
     - name: Build
-      run: GOOS=linux GOARCH=amd64 go build -v ./...
+      run: go build -ldflags="-linkmode external -extldflags '-static'" -v ./...
 
     - name: Test
       run: go test -v ./...
@@ -40,7 +40,4 @@ jobs:
       id: deploy-to-function-app      
       with:
         app-name: pjstools
-        scm-do-build-during-deployment: true
-        enable-oryx-build: true
-        remote-build: true
 
