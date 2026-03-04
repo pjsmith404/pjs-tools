@@ -5,7 +5,6 @@
       "authLevel": "anonymous",
       "direction": "in",
       "name": "req",
-      "route":"status",
       "methods": ["get"]
     },
     {
