@@ -40,3 +40,7 @@ jobs:
       id: deploy-to-function-app      
       with:
         app-name: pjstools
+        scm-do-build-during-deployment: true
+        enable-oryx-build: true
+        remote-build: true
+
