@@ -13,7 +13,7 @@ func main() {
 	}
 
 	mux := http.NewServeMux()
-	mux.HandleFunc("GET /api/status", statusHandler)
+	mux.HandleFunc("GET /status", statusHandler)
 	mux.HandleFunc("GET /ip", handlerIp)
 
 	srv := &http.Server{
