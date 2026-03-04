@@ -4,6 +4,6 @@
 		"description": {
 			"defaultExecutablePath": "pjs-tools"
 		},
-		"enableProxyingHttpRequest": true
+		"enableForwardingHttpRequest": true
 	}
 }
