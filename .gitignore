@@ -1,2 +1,13 @@
 # Ignore build binary
 pjs-tools
+
+# Env
+.env
+
+# TF
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+
