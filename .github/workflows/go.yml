@@ -8,9 +8,6 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
 
     steps:
     - uses: actions/checkout@v4
@@ -25,24 +22,29 @@ jobs:
     - name: "Test"
       run: go test -v ./...
 
+    - name: "Bundle"
+      run: tar -cvf pjs-tools.tar .
+
     - uses: actions/upload-artifact@v4
       with:
-        name: pjs-tools
-        path: pjs-tools
+        name: pjs-tools.tar
+        path: pjs-tools.tar
+        archive: false
 
-#  deploy:
-#    runs-on: ubuntu-latest
-#    permissions:
-#      id-token: write
-#      contents: read
-#    needs: build
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    needs: build
 
-#    steps:
-#    - uses: actions/checkout@v4
+    steps:
+    - uses: actions/download-artifact@v4
+      with:
+        name: pjs-tools.tar
 
-#    - uses: actions/download-artifact@v4
-#      with:
-#        name: pjs-tools
+    - name: "Unpack"
+      run: tar -xvf pjs-tools.tar
 
     - run: ls -alh
 
