@@ -44,7 +44,7 @@ jobs:
         name: pjs-tools.tar
 
     - name: "Unpack"
-      run: tar -xvf pjs-tools.tar
+      run: tar -xvf pjs-tools.tar && rm pjs-tools.tar
 
     - run: ls -alh
 
