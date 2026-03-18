@@ -41,6 +41,8 @@ jobs:
       with:
         name: pjs-tools
 
+    - run: ls -alh
+
     - uses: azure/login@v1
       with:
         client-id: ${{ vars.AZURE_CLIENT_ID }}
