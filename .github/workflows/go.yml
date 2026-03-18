@@ -32,6 +32,7 @@ jobs:
     permissions:
       id-token: write
       contents: read
+    needs: build
 
     steps:
     - uses: actions/checkout@v4
